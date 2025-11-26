@@ -59,30 +59,15 @@ def main_a():
     t = np.linspace(-tMax, tMax, Nt, endpoint=False)
     _z = np.linspace(0, zMax, Nz, endpoint=True)
 
-    # -- DEFINE INTIAL REAL-VALUED FIELD. INITIALLY THE PULSE AMPLITUDE IS SET
     # TO A VALUE THAT YIELDS A FUNDAMENTAL NSE SOLITON
     A0 = np.sqrt(P0)/np.cosh(t/t0)
 
-    # TODO: THE FUNCTION BELOW IS NOT IMPLEMENTE, YET. FOLLOW THE STEPS ON THE
-    # WORKSHEET TO COMPLETE THE CODE
     z, Azt = SSFM_HONSE_symmetric(_z, t, A0, beta2, beta3, beta4, gamma, nSkip)
-
-    # -- POSTPROCESS RESULTS
-    #figure_2a(z, t, Azt)
-    
-    #figures.figure_2a(A, t, z, oName="figure_2a.png")
 
     # -- POSTPROCESS RESULTS
     # Generate output filename with your student ID
     figName = "part2a_ID%s.png" % (__STUDENT_ID__)
     figure_2a(z, t, Azt, oName=figName)
-
-    # Alternative shorter version:
-    # figure_2a(z, t, Azt, oName="figure_2a_ID%s.png" % (__STUDENT_ID__))    
-
-    ANSWER_b1 = "YOUR ANSWER HERE"
-    ANSWER_b2 = "YOUR ANSWER HERE"
-
 
 if __name__ == "__main__":
     main_a()
