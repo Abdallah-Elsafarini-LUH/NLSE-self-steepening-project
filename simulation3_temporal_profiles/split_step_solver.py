@@ -119,7 +119,7 @@ def SSFM_NSE_symmetric(z, t, A0_t, beta2, gamma, nSkip ):
 
     return np.asarray(res_z), np.asarray(res_A)
 
-def SSFM_HONSE_symmetric(z, t, A0_t, beta2, beta3, beta4, gamma, nSkip ):
+def SSFM_HONSE_symmetric(z, t, A0_t, beta2, beta3, beta4, gamma, s, nSkip ):
     """Split step fourier method using symmetric operator splitting
 
     Implements divid-and-conquer strategy to solve the nonlinear Schroedinger
@@ -152,24 +152,15 @@ def SSFM_HONSE_symmetric(z, t, A0_t, beta2, beta3, beta4, gamma, nSkip ):
     # -- INITIALIZE DATA STRUCTURES THAT WILL ACCUMLATE RESULTS
     res_z = []; res_z.append(0)
     res_A = []; res_A.append(A0_t)
-    
-    s = 0.2
 
     for idx in range(1,z.size):
 
         A_t = IFT(np.exp(1j * D_w * dz * 0.5) * FT(A_t))   
         
-        #A_t = A_t * np.exp(-1j * gamma * np.abs(A_t)**2 * dz)        
-        #A_t = IFT(np.exp(1j * D_w * dz * 0.5) * FT(A_t))      
-        
         A_tt = A_t * np.abs(A_t)**2
         A_tt_dt = IFT((-1j) * w * FT(A_tt))
-        #N_t = -1j * gamma * ( A_tt + 1j * s * A_tt_dt )
-        
         N_t = 1j * gamma * A_tt - s * A_tt_dt
-        
         A_t = A_t + dz * N_t
-        
         
         A_t = IFT(np.exp(1j * D_w * dz * 0.5) * FT(A_t))   
 
