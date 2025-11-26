@@ -1,15 +1,3 @@
-""" split_step_solver.py
-
-module implementing different versions of the split step Fourier method
-for the solution of the nonlinear Schroedinger equation (NSE; part 1)
-and the higher-order nonlinear Schroedinger equation (HONSE; part 2)
-
-Supplementary material for the lecture "Computational Photonics" held at
-Leibniz University Hannover in summer term 2017
-
-AUTHOR: OM
-DATE: 2020-06-01
-"""
 import numpy as np
 import numpy.fft as nfft
 
@@ -100,12 +88,7 @@ def SSFM_NSE_symmetric(z, t, A0_t, beta2, gamma, nSkip ):
 
 
     for idx in range(1,z.size):
-        # TODO: THE LINES BELOW RE-IMPLEMENT THE SPLITTING SCHEME USED BY THE
-        # FUNCTION splitStepFourierMethod_NSE_simple(). MODIFY IT SO THAT
-        # IT REALIZES THE SYMMETRIC SPLITTING SCHEME
-        #A_t =  A_t*np.exp(1j*gamma*np.abs(A_t)**2*dz)       # full nonlinear sub-step
-        #A_t =  IFT(np.exp(1j*0.5*beta2*w*w*dz)*FT(A_t))     # full linear sub-step
-
+    
         A_t = IFT(np.exp(1j * beta2 * w * w * dz * 0.25) * FT(A_t))
         
         A_t = A_t * np.exp(1j * gamma * np.abs(A_t)**2 * dz)
