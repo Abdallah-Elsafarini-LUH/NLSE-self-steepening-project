@@ -12,9 +12,11 @@ def main_a():
     beta4 = 0 #-1.321*1e-7                     # (ps^4/m)
     gamma = 1 #0.045                           # (1/W/m) nonlinear coefficient  
     s = 0.2                                    # self-steepening parameter     
+    
     # -- SET PULSE PARAMETERS
     t0 = 1 #0.0284                             # (ps) pulse duration
     P0 = np.abs(beta2)/t0/t0/gamma             # (W) pulse peak power
+    
     # -- SET PARAMETERS FOR COMPUTATIONAL DOMAIN 
     tMax = 50                                  # (ps) bound for time mesh 
     Nt =  2048                                 # (-) number of sample points: t-axis
@@ -33,16 +35,8 @@ def main_a():
     # -- PROPAGATE
     z, Azt = SSFM_HONSE_symmetric(_z, t, A0, beta2, beta3, beta4, gamma, s , nSkip)
 
-    # -- POSTPROCESS RESULTS: draw using figure_2a, then overlay guide line
-    figure_2a(z, t, Azt, s, tLim=(-12,12), wLim=(-10,10), oName="figure_45a.png")
-    
-    #Lambda = (1550 * 10**(-9))
-    #omega = 2 * np.pi * 3 * 10**8 / Lambda
-    #I = np.max(np.abs(A0))**2
-
-    #Vg_inv = gamma * I / omega
-    
-    #print(Vg_inv)
+    # -- POSTPROCESS RESULTS: draw using figure02, then overlay guide line
+    figure_2a(z, t, Azt, s, tLim=(-12,12), wLim=(-10,10), oName="figure04.png")
     
 
 if __name__ == "__main__":
