@@ -34,7 +34,7 @@ def main_a():
     z, Azt = SSFM_HONSE_symmetric(_z, t, A0, beta2, beta3, beta4, gamma, s, nSkip)
 
     # -- POSTPROCESS RESULTS
-    figure_2a(z, t, Azt, tLim = (-12,12), wLim = (-10,10), oName="Figure_2.png")
+    figure_2a(z, t, Azt, tLim = (-12,12), wLim = (-10,10), oName="Figure02.png")
 
     ANSWER_b1 = "YOUR ANSWER HERE"
     ANSWER_b2 = "YOUR ANSWER HERE"
