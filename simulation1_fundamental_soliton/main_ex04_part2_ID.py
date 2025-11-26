@@ -1,42 +1,6 @@
-"""main_ex04_part2_ID.py
-
-Computer Exercises for Lecture "Computational Photonics"
-
-Exercise 04 -  The nonlinear Schroedinger equation - Part II
-
-NOTE: Before you start working on the assignments and before you hand in your
-solution, carefully read the instructions below.
-
-    * You can work on these assignments in groups of up to 3 students. Note,
-      however, that everybody has to hand in his/her own solution.
-
-    * Please personalize your completed script main_ex03_part2 ID.py by replacing
-      the handle ID by your student-id. For redundancy, make sure to also
-      include your name and student-id in the completed scripts that you hand
-      in. We therefore provided three metadata variables
-          __STUDENT_NAME__ = "YOUR NAME HERE"
-          __STUDENT_ID__   = "YOUR STUDENT ID HERE"
-          __GROUP_MEMBERS__ = "IF YOU WORKED AS PART OF A GROUP, LIST YOUR GROUP MEMBERS HERE"
-      at the beginning of the script.
-
-    * To complete the code, look out for TODO statements, they will provide
-      further hints!
-
-DATE: 
-    2021-06-01
-    2023-05-16 (minor edits)
-    2024-05-24 (minor edits)
-    2025-05-23 (minor edits)
-"""
 import numpy as np
 from figures import figure_2a
 from split_step_solver import SSFM_HONSE_symmetric
-
-# -- TODO: PERSONALIZE THIS SCRIPT BY AMENDING THE BELOW METADATA VARIABLES
-__STUDENT_NAME__  = "YOUR NAME HERE"
-__STUDENT_ID__    = "YOUR_STUDENT_ID_HERE"
-__GROUP_MEMBERS__ = "IF YOU WORKED AS PART OF A GROUP, LIST YOUR GROUP MEMBERS HERE"
-
 
 def main_a():
 
@@ -65,11 +29,8 @@ def main_a():
     z, Azt = SSFM_HONSE_symmetric(_z, t, A0, beta2, beta3, beta4, gamma, nSkip)
 
     # -- POSTPROCESS RESULTS
-    # Generate output filename with your student ID
-    figName = "part2a_ID%s.png" % (__STUDENT_ID__)
-    figure_2a(z, t, Azt, oName=figName)
+    # Generate output filename 
+    figure_2a(z, t, Azt, oName="figure01.png")
 
 if __name__ == "__main__":
     main_a()
-
-# EOF: main_ex04_part2_ID.py
